@@ -18,6 +18,14 @@ rule '.js' => '.coffee' do |t|
    sh 'coffee', '-c', t.source
 end
 
+rule 'bin/rejoice' => ['lib/rejoice-bin.js'] do |t|
+  data = File.read(t.source)
+  File.open t.name, 'w' do |file|
+    file.puts "#! /usr/bin/env node"
+    file.write data
+  end
+end
+
 
 ###############################################################################
 #  watch
@@ -45,4 +53,4 @@ task :watch => [:default] do
     end
 end
 
-task :default => (JS)
+task :default => (JS + ['bin/rejoice'])

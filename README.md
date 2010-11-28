@@ -47,7 +47,11 @@ When used with LiveReload, Rejoice will soon automatically reload JavaScript mod
 Bundler
 -------
 
-Bundler is not implemented yet.
+To bundle your dependencies into a single file, run:
+
+    bin/rejoice output.js some/input.js another/input.js
+
+The resulting `output.js` does not have any dependencies, i.e. it can (and should) be used without Rejoice Loader. (Also, unlike the current loader, it does not depend on jQuery.)
 
 
 License & Copyright
