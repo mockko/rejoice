@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rejoice demo</title>
+  </head>
+  <body>
+    <pre id="log"></pre>
+    <script src="../lib/jquery-1.4.4.js"></script>
+    <script>
+      $LOG = console.log;
+      console.log = function(s) {
+        $('#log')[0].innerHTML += "" + s + "\n";
+        $LOG.call(this, s);
+      }
+    </script>
+    <script data-path="." data-main="demo.js" src="../lib/rejoice.js"></script>
+  </body>
+</html>
